@@ -33,7 +33,8 @@ class InternalTxIndexerProvider:
                 instance_class = InternalTxIndexer
 
             cls.instance = instance_class(
-                EthereumClient(settings.ETHEREUM_TRACING_NODE_URL),
+                #EthereumClient(settings.ETHEREUM_TRACING_NODE_URL),
+                EthereumClient(settings.ETHEREUM_NODE_URL),
             )
         return cls.instance
 
