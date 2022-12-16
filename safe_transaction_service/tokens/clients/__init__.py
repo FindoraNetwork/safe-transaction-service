@@ -6,3 +6,4 @@ from .exceptions import CannotGetPrice
 from .kleros_client import KlerosClient, KlerosToken
 from .kraken_client import KrakenClient
 from .kucoin_client import KucoinClient
+from .gateio_client import GateIOClient
