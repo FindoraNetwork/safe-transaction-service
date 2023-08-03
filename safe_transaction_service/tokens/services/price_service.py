@@ -16,6 +16,10 @@ from redis import Redis
 from gnosis.eth import EthereumClient, EthereumClientProvider
 from gnosis.eth.constants import NULL_ADDRESS
 from gnosis.eth.ethereum_client import EthereumNetwork
+
+# https://github.com/safe-global/safe-eth-py/blob/master/gnosis/eth/ethereum_network.py
+EthereumNetwork.GSC_MAINNET = 1204
+
 from gnosis.eth.oracles import (
     AaveOracle,
     BalancerOracle,
@@ -241,6 +245,7 @@ class PriceService:
             return self.get_cronos_usd_price()
         elif self.ethereum_network in (
             EthereumNetwork.FINDORA_MAINNET,
+            EthereumNetwork.GSC_MAINNET,
         ):
             return self.get_findora_usd_price()
         else:

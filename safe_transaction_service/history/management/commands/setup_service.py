@@ -9,6 +9,9 @@ from django_celery_beat.models import IntervalSchedule, PeriodicTask
 from gnosis.eth import EthereumClientProvider
 from gnosis.eth.ethereum_client import EthereumNetwork
 
+# https://github.com/safe-global/safe-eth-py/blob/master/gnosis/eth/ethereum_network.py
+EthereumNetwork.GSC_MAINNET = 1204
+
 from ...models import ProxyFactory, SafeMasterCopy
 
 
@@ -124,14 +127,20 @@ MASTER_COPIES: Dict[EthereumNetwork, List[Tuple[str, int, str]]] = {
         ("0x3085C0b66F75C26066B51F42BA094621C449a94F", 3055731, "1.3.0+L2"),
         ("0x5Dc4C1eDe3A2248C216f60Ae5B650a08617E0584", 3055735, "1.3.0"),
     ],
+    EthereumNetwork.GSC_MAINNET: [
+        ("0x731EA2602291BF0A17Af4BB4F44b3eB126183ef8", 226079, "1.3.0+L2"),
+        ("0x9E3f2df2fFf31ED6bcc0a6737CA0272a832c173D", 226082, "1.3.0"),
+    ],
 }
 
 PROXY_FACTORIES: Dict[EthereumNetwork, List[Tuple[str, int]]] = {
     EthereumNetwork.FINDORA_MAINNET: [
         ("0x18a97F05CAc0aCfB46D620aBA1699989398ABB6a", 3050154),  # v1.3.0
     ],
+    EthereumNetwork.GSC_MAINNET: [
+        ("0x1E53Fa966868E3981626E7B472E92D996d3c5Da8", 226049),  # v1.3.0
+    ],
 }
-
 
 class Command(BaseCommand):
     help = "Setup Transaction Service Required Tasks"
